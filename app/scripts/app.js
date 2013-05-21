@@ -1,4 +1,5 @@
 'use strict';
+//config
 
 angular.module('bikeApp', [])
   .config(function ($routeProvider) {
