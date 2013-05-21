@@ -22,7 +22,7 @@ angular.module('bikeApp')
               })
               var mapOptions = {
                   center: new google.maps.LatLng(50.2, 2.5),
-                  zoom: 7,
+                  zoom: 4,
                   mapTypeId: google.maps.MapTypeId.ROADMAP
               };
               map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -72,7 +72,8 @@ angular.module('bikeApp')
                   origin: start,
                   destination: end,
                   waypoints: waypoints,
-                  travelMode: google.maps.DirectionsTravelMode.DRIVING
+                  travelMode: google.maps.DirectionsTravelMode.DRIVING,
+                  avoidHighways: true
               };
               directionsService.route(request, function(response, status) {
                   if(status == google.maps.DirectionsStatus.OK) {
@@ -86,10 +87,18 @@ angular.module('bikeApp')
 
           initialize();
 //          calcRoute("London", "Paris", true, ["Calais", "Abbeville, FR", "Beauvais"]);
-          calcRoute({lat: 51.30, lng: 0.7}, {lat: 48.853, lng: 2.35}, false, [
+          calcRoute({lat: 51.5133094, lng: -0.1593922}, {lat: 48.8737808, lng: 2.2950261}, false, [
               {
-                  lat: 50.650,
-                  lng: 3.083
+                  lat: 50.95129,
+                  lng: 1.858686
+              },
+              {
+                  lat: 50.105467,
+                  lng: 1.836833
+              },
+              {
+                  lat: 49.42964,
+                  lng: 2.081875
               }
           ]);
 
