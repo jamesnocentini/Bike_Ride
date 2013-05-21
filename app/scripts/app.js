@@ -3,11 +3,11 @@
 angular.module('bikeApp', [])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/map', {
+      .when('/', {
         templateUrl: 'views/map.html',
         controller: 'MapCtrl'
       })

@@ -11,12 +11,12 @@ angular.module('bikeApp')
 
         setTimeout(
             function() {
-                element.fadeOut(3000, function() {
+                element.fadeOut(2000, function() {
                     element.next().removeClass('hide')
                 })
 
             }
-        , 4000)
+        , 3000)
       }
     };
   });
