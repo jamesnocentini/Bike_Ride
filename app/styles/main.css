@@ -28,6 +28,16 @@ body {
 }
 
 /* line 17, main.scss */
+.content {
+  height: 100%;
+}
+
+/* line 20, main.scss */
+.hide {
+  visibility: hidden;
+}
+
+/* line 23, main.scss */
 .poster {
   height: 100%;
   width: auto;
@@ -35,7 +45,19 @@ body {
   display: table;
 }
 
-/* line 24, main.scss */
+/* line 30, main.scss */
+#chart_div {
+  display: inline-block;
+  position: fixed;
+  z-index: 40;
+  margin: 24px auto 24px 49px;
+  bottom: 0px;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+}
+
+/* line 39, main.scss */
 .container {
   width: 460px;
   margin: 24px 5px 30px auto;
@@ -43,7 +65,7 @@ body {
   top: 0;
   right: 0;
 }
-/* line 31, main.scss */
+/* line 46, main.scss */
 .container label {
   width: 420px;
   height: 30px;
@@ -65,22 +87,22 @@ body {
   -moz-user-select: none;
   user-select: none;
 }
-/* line 51, main.scss */
+/* line 66, main.scss */
 .container label:hover {
   background-color: #d4e4a3;
 }
-/* line 58, main.scss */
+/* line 73, main.scss */
 .container input {
   display: none;
 }
-/* line 61, main.scss */
+/* line 76, main.scss */
 .container input:checked + label, .container input:checked + label:hover {
   background-color: #58c3d7;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -moz-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
 }
-/* line 73, main.scss */
+/* line 88, main.scss */
 .container label:hover:after, .container input:checked + label:hover:after {
   content: '';
   position: absolute;
@@ -90,15 +112,15 @@ body {
   height: 24px;
   background: transparent url("./../assets/images/arrow_down.png") no-repeat center center;
 }
-/* line 83, main.scss */
+/* line 98, main.scss */
 .container input:checked + label:hover:after {
   background: transparent url("./../assets/images/arrow_up.png") no-repeat center center;
 }
-/* line 88, main.scss */
+/* line 103, main.scss */
 .container input:checked ~ article {
   height: 290px;
 }
-/* line 93, main.scss */
+/* line 108, main.scss */
 .container article {
   position: relative;
   margin-top: -1px;
@@ -112,14 +134,14 @@ body {
   -o-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
   transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
 }
-/* line 106, main.scss */
+/* line 121, main.scss */
 .container article .thumb {
   overflow: hidden;
   width: 460px;
   height: 200px;
   border: 1px solid #ccc;
 }
-/* line 117, main.scss */
+/* line 132, main.scss */
 .container article h4 {
   margin-left: 10px;
   padding: 5px 5px 5px 5px;

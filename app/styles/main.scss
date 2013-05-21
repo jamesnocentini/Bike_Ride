@@ -14,11 +14,26 @@ body { height: 100%; margin: 0; padding: 0; width: 100%;}
   width: 100%;
 }
 .ng-view{width: 100%;}
+.content {
+  height: 100%;
+}
+.hide {
+  visibility: hidden;
+}
 .poster {
   height: 100%;
   width: auto;
   margin: 0 auto;
   display: table;
+}
+
+#chart_div {
+  display: inline-block;
+  position: fixed;
+  z-index: 40;
+  margin: 24px auto 24px 49px;
+  bottom: 0px;
+  @include box-shadow();
 }
 
 .container{

@@ -8,11 +8,25 @@ angular.module('bikeApp')
       link: function postLink(scope, element, attrs) {
           var directionsDisplay;
           var directionsService = new google.maps.DirectionsService();
+          var elevationService;
           var map;
 
           var start_icon = './../../assets/icons/pins/pin4.png';
           var end_icon = './../../assets/icons/pins/pin2.png';
           var stop_icon = './../../assets/icons/pins/pin1.png';
+          var elevation_icon = './../../assets/icons/pins/pin9.png';
+
+
+
+          var chart = null;
+
+          var mousemarker = null;
+          var markers = [];
+          var polyline = null;
+          var elevations = null;
+
+          var SAMPLES = 256;
+
 
 
           function initialize() {
@@ -29,6 +43,23 @@ angular.module('bikeApp')
                   mapOptions);
               scope.map = map;
               directionsDisplay.setMap(map);
+
+              chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+              elevationService = new google.maps.ElevationService();
+
+              google.visualization.events.addListener(chart, 'onmouseover', function(e) {
+                  if (mousemarker == null) {
+                      mousemarker = new google.maps.Marker({
+                          position: elevations[e.row].location,
+                          map: map,
+                          icon: elevation_icon
+                      });
+                  } else {
+                      mousemarker.setPosition(elevations[e.row].location);
+                  }
+              });
+
+
           }
 
 
@@ -78,11 +109,55 @@ angular.module('bikeApp')
               directionsService.route(request, function(response, status) {
                   if(status == google.maps.DirectionsStatus.OK) {
                       directionsDisplay.setDirections(response);
+
+                      elevationService.getElevationAlongPath({
+                          path: response.routes[0].overview_path,
+                          samples: SAMPLES
+                      }, plotElevation);
                       console.log(response, status)
                   } else {
                       console.log(response, status)
                   }
               })
+          }
+
+          // Takes an array of ElevationResult objects, draws the path on the map
+// and plots the elevation profile on a GViz ColumnChart
+          function plotElevation(results) {
+              elevations = results;
+
+              var path = [];
+              for (var i = 0; i < results.length; i++) {
+                  path.push(elevations[i].location);
+              }
+
+              if (polyline) {
+                  polyline.setMap(null);
+              }
+
+              polyline = new google.maps.Polyline({
+                  path: path,
+                  strokeColor: "#000000",
+                  map: map});
+
+              var data = new google.visualization.DataTable();
+              data.addColumn('string', 'Sample');
+              data.addColumn('number', 'Elevation');
+              for (var i = 0; i < results.length; i++) {
+                  data.addRow(['', elevations[i].elevation]);
+              }
+
+              chart.draw(data, {
+                  width: 460,
+                  height: 200,
+                  legend: 'none',
+                  titleY: 'Elevation (m)',
+                  focusBorderColor: '#00ff00',
+//                  backgroundColor: {fill: 'green'},
+                  backgroundColor: '#F4F4C3',
+                  fontName: 'Courrier',
+                  vAxis: {textStyle:{color: 'red'}}
+              });
           }
 
           initialize();

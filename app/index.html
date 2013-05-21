@@ -28,23 +28,34 @@
     <!-- Add your site or application content here -->
     <div class="ng-view" ng-view></div>
 
-    <script>
-//        setTimeout(function() {
-//            var iframe = document.getElementById('iframe0');
-//            var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-//            console.log(innerDoc);
-//        }, 5000)
 
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script>
+        // Load the Visualization API and the piechart package.
+        google.load("visualization", "1", {packages: ["columnchart"]});
     </script>
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWgWc1qXyB2pz0rp9TQlOVWjQN19yueqQ&sensor=false">
     </script>
+
+    <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
     <script src="/socket.io/socket.io.js"></script>
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
     <script src="components/angular-cookies/angular-cookies.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.js"></script>
+
+    <script>
+//        setTimeout(function() {
+//            var iframe = $('iframe')[0];
+//            var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+//            console.log(innerDoc);
+//
+//
+//        }, 5000)
+
+    </script>
 
 
     <!-- build:js scripts/scripts.js -->

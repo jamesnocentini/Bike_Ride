@@ -1,17 +1,25 @@
-<map-ui></map-ui>
+<launch-ui></launch-ui>
 
-<section class="container" ng-controller="PlanCtrl">
-    <div ng-repeat="step in trip">
-        <input id="{{$index}}" type="checkbox">
-        <label for="{{$index}}">{{step.name}}</label>
-        <article>
-            <div class="thumb">
-                <img src="{{step.image}}">
-            </div>
-            <h4>Distance: {{step.distance}} miles</h4>
-            <h4>Pace: {{step.pace}} min/mil</h4>
-            <h4>Time: {{step.time}}</h4>
-        </article>
-    </div>
+<section class="content hide">
+
+    <div id="chart_div"></div>
+    <map-ui></map-ui>
+
+    <section class="container" ng-controller="PlanCtrl">
+        <div ng-repeat="step in trip">
+            <input id="{{$index}}" type="checkbox">
+            <label for="{{$index}}">{{step.name}}</label>
+            <article>
+                <div class="thumb">
+                    <img src="{{step.image}}">
+                </div>
+                <h4>Distance: {{step.distance}} miles</h4>
+                <h4>Pace: {{step.pace}} min/mil</h4>
+                <h4>Time: {{step.time}}</h4>
+            </article>
+        </div>
+    </section>
+
 </section>
+
 
